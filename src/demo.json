@@ -1,0 +1,91 @@
+{
+  "input": [
+    {
+      "id": 1,
+      "label": "First Name",
+      "type": "text",
+      "placeholder": "First Name",
+      "element": "input"
+    },
+    {
+      "id": 2,
+      "label": "Last Name",
+      "type": "text",
+      "placeholder": "Last Name",
+      "element": "input"
+    },
+    {
+      "id": 3,
+      "label": "Email",
+      "type": "email",
+      "placeholder": "Email",
+      "element": "input"
+    },
+    {
+      "id": 4,
+      "label": "Are you employed?",
+      "element": "input",
+      "option": [
+        {
+          "id": 1,
+          "name": "employment",
+          "label": "Employed",
+          "type": "radio",
+          "value": "employed"
+        },
+        {
+          "id": 2,
+          "name": "employment",
+          "label": "Unemployed",
+          "type": "radio",
+          "value": "unemployed"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "label": "Select 3 of the following you know best.",
+      "element": "input",
+      "option": [
+        {
+          "id": 1,
+          "name": "react",
+          "type": "checkbox",
+          "label": "ReactJS"
+        },
+        {
+          "id": 2,
+          "name": "angular",
+          "type": "checkbox",
+          "label": "Angular"
+        },
+        {
+          "id": 3,
+          "name": "express",
+          "type": "checkbox",
+          "label": "ExpressJs"
+        },
+        {
+          "id": 4,
+          "name": "node",
+          "type": "checkbox",
+          "label": "Node.js"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "label": "Preferred Tech",
+      "element": "select",
+      "option": [
+        "--Select--",
+        "Javascript",
+        "Java",
+        "C++",
+        "Python",
+        "GraphQL",
+        "Other"
+      ]
+    }
+  ]
+}
