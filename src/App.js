@@ -14,19 +14,31 @@ function App() {
   const [userId, setUserId] = useState("");
   const [state, dispatch] = useAppContext()
   const { firstName, lastName, email, employment, tech, preferredTech } = state
-
-  //for now
-  const input = data.input;
-
-  const fetchData = async () => {
-    try {
-      const userDetails = await fetchUser();
-      const tempData = [...(userDetails ?? [])];
-      setUserData(tempData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const arrOfState = [
+    {
+      id: 1,
+      state: firstName
+    },
+    {
+      id: 2,
+      state: lastName
+    },
+    {
+      id: 3,
+      state: email
+    },
+    {
+      id: 4,
+      state: employment
+    },
+    {
+      id: 5,
+      state: tech
+    },
+    {
+      id: 6,
+      state: preferredTech
+    }]
 
   const sortById = () => {
     return function (elem1, elem2) {
@@ -40,7 +52,19 @@ function App() {
     };
   }
 
-  console.log(input.sort(sortById()));
+  //for now
+  const input = data.input.sort(sortById());
+  const sortedState = arrOfState.sort(sortById());
+
+  const fetchData = async () => {
+    try {
+      const userDetails = await fetchUser();
+      const tempData = [...(userDetails ?? [])];
+      setUserData(tempData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleInputChange = (obj) => {
     dispatch({ type: "input", payload: obj });
@@ -87,6 +111,20 @@ function App() {
     }
   };
 
+  const handleUpdate = (_id) => {
+    const selectedData = userData.filter((e) => e._id === _id)[0];
+    handleInputChange({
+      firstName: selectedData.jobTitle,
+      lastName: selectedData.lastName,
+      email: selectedData.email,
+      employment: selectedData.employment,
+      tech: selectedData.tech,
+      preferredTech: selectedData.preferredTech
+    });
+    setToggle(true);
+    setUserId(_id);
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -97,7 +135,7 @@ function App() {
         {input?.map((item) => {
           return (
             <div key={item.id}>
-              <UserForm data={item} />
+              <UserForm data={item} handleInputChange={handleInputChange} state={sortedState.map((item) => { return (item.state) })} handleSubmit={handleSubmit} />
             </div>
           )
         })}
